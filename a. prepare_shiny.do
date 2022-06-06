@@ -51,8 +51,8 @@ set graph off
 	g no_pareja_nunca = (inlist(p14,3,4)) 
 	
 	* Cuernos en la actual pareja
-	g cuernos = (p33_5==1) if couple == 1 
-	replace cuernos = 1 if p33_3 == 1 & couple == 1 
+	g cuernos = (p33_5==1) if couple == 1 // relaciones sexuales
+	replace cuernos = 1 if p33_3 == 1 & couple == 1 // seducción con contacto físico (e.g., beso)
 
 	* Monogamia
 	g monogamia = (p32==1) if couple == 1
