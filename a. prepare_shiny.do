@@ -33,12 +33,15 @@ set graph off
 	
 	* Mi pareja actual es el amor más importante ed mi vida
 	g gran_amor_couple = (p36==1) if p36 !=.
+	lab var gran_amor_couple "Mi pareja actual es el amor más importante ed mi vida"
 	
 	* Prob. ruptura
 	g probabilidad_ruptura = p37/10 if inrange(p37,0,10) & p37 != .
+	lab var probabilidad_ruptura "Probabilidad de ruptura"
 	
 	* Satisfacción con la pareja
 	g satisfaccion_pareja = p30 if inrange(p30,0,10) & p37 != .
+	lab var satisfaccion_pareja "Satisfacción con la pareja"
 	
 	* Dummy para parejas
 	tab p13
@@ -49,17 +52,21 @@ set graph off
 	
 	* Nunca han tenido pareja 
 	g no_pareja_nunca = (inlist(p14,3,4)) 
-	
+	lab var no_pareja_nunca "Nunca han tenido pareja"
+
 	* Cuernos en la actual pareja
 	g cuernos = (p33_5==1) if couple == 1 // relaciones sexuales
 	replace cuernos = 1 if p33_3 == 1 & couple == 1 // seducción con contacto físico (e.g., beso)
-
+	lab var cuernos "Cuernos en la pareja"
+	
 	* Monogamia
 	g monogamia = (p32==1) if couple == 1
+	lab var monogamia "Relación monógama"
 	
 	* Cree que se es más feliz con pareja
 	g mas_feliz_pareja = (inlist(p2primera,1))
 	replace mas_feliz_pareja = 1 if p2segunda == 1
+	lab var mas_feliz_pareja "Cree que se es más feliz con pareja"
 	
 	* Qué cosas harías por tu pareja 
 	g infidelidad = (p6_1==1) if p4 == 1
@@ -71,9 +78,12 @@ set graph off
 	g amigos_familiares = (p6_7==1) if p4 == 1 
 	
 	* Ideología
+	labelbook ideologia_r
 	g ideologia_bis = 1 if inlist(ideologia_r,1,2)
 	replace ideologia_bis = 2 if inlist(ideologia_r,3,4,5)
 	replace ideologia_bis = 3 if inlist(ideologia_r,6,7)
+	lab define ideologia_bis 1 "De izquierdas" 2 "De centro" 3 "De derechas"
+	lab values ideologia_bis ideologia_bis
 	
 	* En mi relación actual, experimento...
 	g falta_ilusion = (inlist(p34_1,1,2)) if couple == 1
@@ -83,6 +93,5 @@ set graph off
 	g admiracion_respeto = (inlist(p34_5,1,2)) if couple == 1
 	g relaciones_placenteras = (inlist(p34_7,1,2)) if couple == 1
 	g relaciones_noplacenteras = (inlist(p34_8,1,2)) if couple == 1
-	
 	
 save "proc/amor_40db_shiny.dta", replace
