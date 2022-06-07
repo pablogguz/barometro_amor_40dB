@@ -202,7 +202,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                   choices = c("Tienen pareja", 
                               "Nunca han tenido pareja", 
                               "Responden que su pareja actual es el amor \nmás importante de su vida", 
-                              "Han puesto los cuernos a su actual pareja",
+                              "Han sido infieles a su actual pareja",
                               "Tiene una pareja monógama",
                               "Creen que se es más feliz en pareja")),
       
@@ -310,7 +310,7 @@ server <- function(input, output) {
       data$outcome <- data$gran_amor_couple
     } 
     
-    if (input$panela == "Han puesto los cuernos a su actual pareja") {
+    if (input$panela == "Han sido infieles a su actual pareja") {
       data$outcome <- data$cuernos
     } 
     
