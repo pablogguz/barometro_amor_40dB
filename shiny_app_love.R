@@ -125,6 +125,27 @@ data$ccaa2 <- ifelse(data$ccaa==13,
                           "Madrid",
                           data$ccaa2)
 
+# Tamaño de hábitat 
+
+data$hab2 <- ifelse(data$hab==1,
+                     "< 10.000",
+                     NA)
+data$hab2 <- ifelse(data$hab==2,
+                     "10.001 \n- 20.000",
+                     data$hab2)
+data$hab2 <- ifelse(data$hab==3,
+                     "20.001 \n- 50.000",
+                     data$hab2)
+data$hab2 <- ifelse(data$hab==4,
+                     "50.001 \n- 100.000",
+                     data$hab2)
+data$hab2 <- ifelse(data$hab==5,
+                     "100.001 \n- 500.000",
+                     data$hab2)
+data$hab2 <- ifelse(data$hab==6,
+                     "500.000 +",
+                     data$hab2)
+
 # Function for computing weighted means and CIs
 weighted.summarySE <- function(data=NULL, measurevar,  groupvars=NULL, weights, na.rm=FALSE,
                                conf.interval=.95, .drop=TRUE) {
@@ -194,7 +215,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
       # Input: Selector for choosing second level of aggregation  ---- 
       selectInput(inputId = "second",
                   label = "2️⃣ Elige un segundo nivel de agregación:",
-                  choices = c("Por grupo de edad", "Por clase social", "Por recuerdo de voto", "Por ideología", "Por CCAA*")),
+                  choices = c("Por grupo de edad", "Por clase social", "Por recuerdo de voto", "Por ideología", "Por CCAA*", "Por tamaño de hábitat")),
       
       # Input: PANEL A ---- 
       selectInput(inputId = "panela",
@@ -288,6 +309,10 @@ server <- function(input, output) {
       data$group2 <- data$ccaa2
     } 
     
+    if (input$second == "Por tamaño de hábitat") {
+      data$group2 <- data$hab2
+    } 
+    
     if (input$second == "Por clase social") {
       data$group2 <- data$clasesocial2
     } 
@@ -369,6 +394,11 @@ server <- function(input, output) {
     
     if (input$second == "Por CCAA*") {
       data$group2 <- data$ccaa2
+    } 
+    
+    
+    if (input$second == "Por tamaño de hábitat") {
+      data$group2 <- data$hab2
     } 
     
     if (input$second == "Por clase social") {
@@ -462,6 +492,11 @@ server <- function(input, output) {
       data$group2 <- data$ccaa2
     } 
     
+    
+    if (input$second == "Por tamaño de hábitat") {
+      data$group2 <- data$hab2
+    } 
+    
     if (input$second == "Por clase social") {
       data$group2 <- data$clasesocial2
     } 
@@ -544,6 +579,11 @@ server <- function(input, output) {
     
     if (input$second == "Por CCAA*") {
       data$group2 <- data$ccaa2
+    } 
+    
+    
+    if (input$second == "Por tamaño de hábitat") {
+      data$group2 <- data$hab2
     } 
     
     if (input$second == "Por clase social") {
