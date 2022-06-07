@@ -203,7 +203,7 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                               "Nunca han tenido pareja", 
                               "Responden que su pareja actual es el amor \nmás importante de su vida", 
                               "Han sido infieles a su actual pareja",
-                              "Tiene una pareja monógama",
+                              "Tienen una pareja monógama",
                               "Creen que se es más feliz en pareja")),
       
       # Input: PANEL B ---- 
@@ -233,13 +233,13 @@ ui <- fluidPage(theme = shinytheme("flatly"),
                   label = "Panel D: Sobre tu actual pareja",
                   choices = c("Grado de satisfacción (0-10)", 
                               "Probabilidad de ruptura", 
-                              "Experimento falta de ilusión \no aburrimiento", 
-                              "Experimento afecto y comprensión",
-                              "Experimento escucha activa \ny comunicación",
-                              "Experimento celos",
-                              "Experimento admiración y respeto",
-                              "Experimento relaciones sexuales \nplacenteras",
-                              "Experimento relaciones sexuales \nno placenteras")),
+                              "Experimenta falta de ilusión \no aburrimiento", 
+                              "Experimenta afecto y comprensión",
+                              "Experimenta escucha activa \ny comunicación",
+                              "Experimenta celos",
+                              "Experimenta admiración y respeto",
+                              "Experimenta relaciones sexuales \nplacenteras",
+                              "Experimenta relaciones sexuales \nno placenteras")),
       
       h6("*Sólo se muestran las CCAAs con > 100 observaciones."),
       
@@ -318,7 +318,7 @@ server <- function(input, output) {
       data$outcome <- data$mas_feliz_pareja
     } 
     
-    if (input$panela == "Tiene una pareja monógama") {
+    if (input$panela == "Tienen una pareja monógama") {
       data$outcome <- data$monogamia
     } 
     
@@ -564,31 +564,31 @@ server <- function(input, output) {
       data$outcome <- data$probabilidad_ruptura
     } 
     
-    if (input$paneld == "Experimento falta de ilusión \no aburrimiento") {
+    if (input$paneld == "Experimenta falta de ilusión \no aburrimiento") {
       data$outcome <- data$falta_ilusion
     } 
     
-    if (input$paneld == "Experimento afecto y comprensión") {
+    if (input$paneld == "Experimenta afecto y comprensión") {
       data$outcome <- data$afecto_comprension
     }   
     
-    if (input$paneld == "Experimento celos") {
+    if (input$paneld == "Experimenta celos") {
       data$outcome <- data$celos
     } 
     
-    if (input$paneld == "Experimento escucha activa \ny comunicación") {
+    if (input$paneld == "Experimenta escucha activa \ny comunicación") {
       data$outcome <- data$escucha_activa
     } 
     
-    if (input$paneld == "Experimento admiración y respeto") {
+    if (input$paneld == "Experimenta admiración y respeto") {
       data$outcome <- data$admiracion_respeto
     } 
     
-    if (input$paneld == "Experimento relaciones sexuales \nplacenteras") {
+    if (input$paneld == "Experimenta relaciones sexuales \nplacenteras") {
       data$outcome <- data$relaciones_placenteras
     } 
     
-    if (input$paneld == "Experimento relaciones sexuales \nno placenteras") {
+    if (input$paneld == "Experimenta relaciones sexuales \nno placenteras") {
       data$outcome <- data$relaciones_noplacenteras
     } 
     
